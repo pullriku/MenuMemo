@@ -30,5 +30,6 @@
   ],
   "start_url": "/MenuRegisterer/index.html",
   "theme_color": "#0000FF",
+  "display": "standalone",
   "background_color": "#0000FF"
 }
