@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=1, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
     <link rel="manifest" href="manifest.json">
     <title>Menu Register</title>
   </head>
-  <body>
+<body>
     <h1>My Recipe Collection</h1>
 
     <button onclick="javascript:location.href=`./index.html`">👈戻る</button>
 
     <h2>献立を登録する</h2>
 
-    <form action=""></form>
     <div id="menuInfo">
         <p>
             <label for="menuNameField">献立名(任意) </label><br>
@@ -22,8 +21,8 @@
         </p>
 
         <p>
-            <label for="mealType">種類</label>
-            <select name="mealType" id="mealType">
+            <label for="mealTypeSelector">種類</label>
+            <select name="mealTypeSelector" id="mealTypeSelector">
                 <option value="morning">朝食</option>
                 <option value="lunch">昼食</option>
                 <option value="dinner">夕食</option>
@@ -31,13 +30,16 @@
         </p>
 
         <p>
-            <label for="menuContents">献立を入力:</label><br>
-            <textarea name="menuContents" id="menuContents" cols="30" rows="10"></textarea>
+            <label for="menuContentsField">献立を入力:</label><br>
+            <textarea name="menuContentsField" id="menuContentsField" cols="30" rows="10"></textarea>
         </p>
 
-        <button id="submitButton" onclick="">登録</button>
+        <button id="submitButton">登録</button>
 
     </div>
 
-  </body>
+    <script src="./js/menu.js"></script>
+    <script src="./js/add.js"></script>
+
+</body>
 </html>

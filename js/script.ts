@@ -6,20 +6,6 @@ if ('serviceWorker' in navigator) {
     });
 }
 
-class Menu {
-    name: string;
-    dishes: string[];
-    created: Date;
-
-    constructor(name: string = "", dishes: string[] = [], created: Date = new Date()) {
-        this.name = name;
-        this.dishes = dishes;
-        this.created = created;
-    }
-}
-
-
-
 function main() {
     
     const DATA_NAME = "mealData";
@@ -30,24 +16,27 @@ function main() {
 
     let anyData = JSON.parse(localStorage.getItem(DATA_NAME) ?? "[]");
     let data: Menu[];
-    if( ! Array.isArray(anyData)) {
+    if(Array.isArray(anyData)) {
+        console.log("読み込み成功");
+        
+        data = anyData;
+    } else {
         localStorage.setItem(DATA_NAME, JSON.stringify(new Array()));
         data = JSON.parse(localStorage.getItem(DATA_NAME) ?? "");
-    } else {
-        data = anyData;
     }
 
-    console.log("Debug");
-    console.log(data);
-    let debugData = new Menu("カレーライス", ["カレー", "あああ", "あ", ], new Date());
-    data.push(debugData)
-    localStorage.setItem(DATA_NAME, JSON.stringify(
-        data
-    ))
+    console.log("data:", data);
+    
+
+    // console.log("Debug");
+    // console.log(data);
+    // let debugData = new Menu("カレーライス", ["カレー", "あああ", "あ", ], new Date());
+    // data.push(debugData)
+    // localStorage.setItem(DATA_NAME, JSON.stringify(
+    //     data
+    // ))
 
     let section = document.querySelector("div#menuInfo");
-    console.log(section);
-    
     
     data.forEach(elem => {
         if (section === null) return;

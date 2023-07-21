@@ -6,13 +6,6 @@ if ('serviceWorker' in navigator) {
         console.log('登録失敗', err);
     });
 }
-class Menu {
-    constructor(name = "", dishes = [], created = new Date()) {
-        this.name = name;
-        this.dishes = dishes;
-        this.created = created;
-    }
-}
 function main() {
     var _a, _b;
     const DATA_NAME = "mealData";
@@ -20,20 +13,23 @@ function main() {
     localStorage.removeItem("testMeal");
     let anyData = JSON.parse((_a = localStorage.getItem(DATA_NAME)) !== null && _a !== void 0 ? _a : "[]");
     let data;
-    if (!Array.isArray(anyData)) {
+    if (Array.isArray(anyData)) {
+        console.log("読み込み成功");
+        data = anyData;
+    }
+    else {
         localStorage.setItem(DATA_NAME, JSON.stringify(new Array()));
         data = JSON.parse((_b = localStorage.getItem(DATA_NAME)) !== null && _b !== void 0 ? _b : "");
     }
-    else {
-        data = anyData;
-    }
-    console.log("Debug");
-    console.log(data);
-    let debugData = new Menu("カレーライス", ["カレー", "あああ", "あ",], new Date());
-    data.push(debugData);
-    localStorage.setItem(DATA_NAME, JSON.stringify(data));
+    console.log("data:", data);
+    // console.log("Debug");
+    // console.log(data);
+    // let debugData = new Menu("カレーライス", ["カレー", "あああ", "あ", ], new Date());
+    // data.push(debugData)
+    // localStorage.setItem(DATA_NAME, JSON.stringify(
+    //     data
+    // ))
     let section = document.querySelector("div#menuInfo");
-    console.log(section);
     data.forEach(elem => {
         if (section === null)
             return;
