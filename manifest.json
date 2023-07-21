@@ -1,7 +1,7 @@
 {
-  "name": "テストアプリ - TestApp",
-  "short_name": "TestApp",
-  "description": "PWAのテストアプリです。",
+  "name": "MenuRegisterer",
+  "short_name": "MR",
+  "description": "献立を記録する",
   "icons": [
     {
       "src": "myicons/manifest-icon-192.maskable.png",
@@ -29,7 +29,6 @@
     }
   ],
   "start_url": "/index.html",
-  "display": "standalone",
   "theme_color": "#0000FF",
   "background_color": "#0000FF"
 }
