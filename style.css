@@ -1,0 +1,18 @@
+h1 {
+    background-color: skyblue;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+section{
+    display: block;
+    background-color: gainsboro;
+    border-radius: 8px;
+
+}
+
+.field {
+    display: block;
+    padding: 10px;
+    margin-top: 10px;
+}
