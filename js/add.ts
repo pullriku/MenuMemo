@@ -26,7 +26,7 @@ function register() {
     
     localStorage.setItem(DATA_NAME, JSON.stringify(data));
     
-    location.href = "../index.html";
+    location.href = "https://tyomogit.github.io/MenuRegisterer/";
 }
 
 function readData(): Menu[] {
