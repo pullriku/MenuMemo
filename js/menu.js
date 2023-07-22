@@ -7,3 +7,12 @@ class Menu {
         this.memo = memo;
     }
 }
+function openLink(path) {
+    const repositoryName = "MenuMemo";
+    if (location.hostname == "tyomogit.github.io") {
+        location.pathname = `/${repositoryName}/${path}`;
+    }
+    else {
+        location.pathname = `/${path}`;
+    }
+}

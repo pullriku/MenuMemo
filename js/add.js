@@ -39,7 +39,7 @@ function register() {
     }
     data.push(new Menu(menuName, menuContents === null || menuContents === void 0 ? void 0 : menuContents.split("\n"), date, menuMemo));
     localStorage.setItem(DATA_NAME, JSON.stringify(data));
-    location.pathname = "/";
+    openLink("index.html");
 }
 function readData() {
     var _a;

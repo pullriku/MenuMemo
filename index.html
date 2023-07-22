@@ -44,14 +44,14 @@
     <h1>My Recipe Collection</h1>
     <nav>
       <div id="leftSide">
-        <button onclick="location.pathname = '/add.html'"> ✏️ 登録する</button>
+        <button onclick="openLink(`add.html`)"> ✏️ 登録する</button>
         <select name="filter">
           <option value="all">😀フィルターなし</option>
           <option value="star" onchange="">⭐️スターのみ</option>
         </select>
       </div>
       <div id="rightSide">
-        <button id="settingsButton" onclick="location.pathname='/settings.html'">⚙️設定</button>
+        <button id="settingsButton" onclick="openLink('settings.html')">⚙️設定</button>
       </div>
     </nav>
     <div id="menuInfo">

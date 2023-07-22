@@ -53,7 +53,7 @@ function register() {
     
     localStorage.setItem(DATA_NAME, JSON.stringify(data));
     
-    location.pathname = "/";
+    openLink("index.html");
 }
 
 function readData(): Menu[] {
