@@ -15,7 +15,7 @@ function register() {
     data.push(new Menu(menuName !== null && menuName !== void 0 ? menuName : "名前なし", menuContents === null || menuContents === void 0 ? void 0 : menuContents.split("\n"), new Date()));
     console.log(data);
     localStorage.setItem(DATA_NAME, JSON.stringify(data));
-    location.href = "../index.html";
+    location.href = "https://tyomogit.github.io/MenuRegisterer/";
 }
 function readData() {
     var _a;
