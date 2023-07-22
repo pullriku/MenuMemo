@@ -1,5 +1,5 @@
 {
-  "name": "MenuRegisterer",
+  "name": "MenuMemo",
   "short_name": "MR",
   "description": "献立を記録する",
   "icons": [
@@ -28,7 +28,7 @@
       "purpose": "maskable"
     }
   ],
-  "start_url": "/MenuRegisterer/index.html",
+  "start_url": "/MenuMemo/index.html",
   "theme_color": "#0000FF",
   "display": "standalone",
   "background_color": "#0000FF"
