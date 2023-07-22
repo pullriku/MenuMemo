@@ -13,11 +13,14 @@ class Menu {
 }
 
 function openLink(path: string) {
+    location.pathname = strPath(path);
+}
+
+function strPath(path: string): string {
     const repositoryName = "MenuMemo";
     if (location.hostname == "tyomogit.github.io") {
-        location.pathname = `/${repositoryName}/${path}`;
+        return `/${repositoryName}/${path}`;
     } else {
-        location.pathname = `/${path}`;
+        return `/${path}`;
     }
 }
-console.log(location.hostname);

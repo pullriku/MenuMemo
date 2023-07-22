@@ -8,12 +8,14 @@ class Menu {
     }
 }
 function openLink(path) {
+    location.pathname = strPath(path);
+}
+function strPath(path) {
     const repositoryName = "MenuMemo";
     if (location.hostname == "tyomogit.github.io") {
-        location.pathname = `/${repositoryName}/${path}`;
+        return `/${repositoryName}/${path}`;
     }
     else {
-        location.pathname = `/${path}`;
+        return `/${path}`;
     }
 }
-console.log(location.hostname);
