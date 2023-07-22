@@ -42,12 +42,25 @@ function main() {
         if (section === null) return;
         let dishes = elem.dishes.join(`</li><li>`);
         dishes = `<li>${dishes}</li>`;
+        const memoText = elem.memo == undefined || elem.memo == "" ? "" : `
+        <h4 id="menuMemo">メモ</h4>
+        ${elem.memo}
+        `;
+
+        const date = new Date();
+        const year = date.getFullYear();
+        const month = date.getMonth() + 1;
+        const day = date.getDate();
+        const dateString = `${year}/${month}/${day}`;
+
         section.innerHTML += `
         <section class="field">
+        <small id="created">${dateString}</small>
         <h3>${elem.name}</h3>
         <ul>
         ${dishes}
         </ul>
+        ${memoText}
         </section>
         `
     });

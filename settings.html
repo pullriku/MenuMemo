@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="manifest" href="manifest.json">
+    <title>Menu Register</title>
+  </head>
+<body>
+    <h1>My Recipe Collection</h1>
+
+    <button onclick="javascript:location.pathname=`/`">👈戻る</button>
+
+    <h2>設定</h2>
+
+    <div id="menuInfo">
+        <button id="removeAllButton" style="margin: 10px;">登録したデータを全て消す</button>
+    </div>
+
+    <script>
+        let removeAllButton = document.getElementById("removeAllButton");
+        removeAllButton.addEventListener("click", e => {
+        localStorage.removeItem("mealData");
+        location.reload();
+        });
+    </script>
+
+    <script src="./js/menu.js"></script>
+    <script src="./js/add.js"></script>
+
+</body>
+</html>
