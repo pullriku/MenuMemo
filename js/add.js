@@ -37,7 +37,7 @@ function register() {
         const dateString = `${year}/${month}/${day}`;
         menuName = `${dateString}の${mealType}`;
     }
-    data.push(new Menu(menuName, menuContents === null || menuContents === void 0 ? void 0 : menuContents.split("\n"), date, menuMemo));
+    data.push(new Menu(menuName, menuContents === null || menuContents === void 0 ? void 0 : menuContents.split("\n"), date.toISOString(), menuMemo));
     localStorage.setItem(DATA_NAME, JSON.stringify(data));
     openLink("index.html");
 }

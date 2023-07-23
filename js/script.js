@@ -21,15 +21,8 @@ function main() {
         localStorage.setItem(DATA_NAME, JSON.stringify(new Array()));
         data = JSON.parse((_b = localStorage.getItem(DATA_NAME)) !== null && _b !== void 0 ? _b : "");
     }
-    console.log("data:", data);
-    // console.log("Debug");
-    // console.log(data);
-    // let debugData = new Menu("カレーライス", ["カレー", "あああ", "あ", ], new Date());
-    // data.push(debugData)
-    // localStorage.setItem(DATA_NAME, JSON.stringify(
-    //     data
-    // ))
     let section = document.querySelector("div#menuInfo");
+    data.reverse();
     data.forEach(elem => {
         if (section === null)
             return;
@@ -39,7 +32,8 @@ function main() {
         <h4 id="menuMemo">メモ</h4>
         ${elem.memo}
         `;
-        const date = new Date();
+        const date = new Date(Date.parse(elem.created));
+        console.log(date);
         const year = date.getFullYear();
         const month = date.getMonth() + 1;
         const day = date.getDate();

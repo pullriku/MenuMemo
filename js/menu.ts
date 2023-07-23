@@ -1,10 +1,10 @@
 class Menu {
     name: string;
     dishes: string[];
-    created: Date;
+    created: string;
     memo: string
 
-    constructor(name: string = "", dishes: string[] = [], created: Date = new Date(), memo: string = "") {
+    constructor(name: string = "", dishes: string[] = [], created: string = new Date().toISOString(), memo: string = "") {
         this.name = name;
         this.dishes = dishes;
         this.created = created;

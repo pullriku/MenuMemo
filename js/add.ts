@@ -46,7 +46,7 @@ function register() {
         new Menu(
             menuName,
             menuContents?.split("\n"),
-            date,
+            date.toISOString(),
             menuMemo
         )
     );

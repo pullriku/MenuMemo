@@ -1,6 +1,6 @@
 "use strict";
 class Menu {
-    constructor(name = "", dishes = [], created = new Date(), memo = "") {
+    constructor(name = "", dishes = [], created = new Date().toISOString(), memo = "") {
         this.name = name;
         this.dishes = dishes;
         this.created = created;
