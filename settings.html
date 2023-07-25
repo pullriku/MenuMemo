@@ -21,8 +21,10 @@
     <script>
         let removeAllButton = document.getElementById("removeAllButton");
         removeAllButton.addEventListener("click", e => {
-        localStorage.removeItem("mealData");
-        location.reload();
+            const permission = window.confirm("全てのデータを削除しますか？");
+            if (permission == false) return;
+            localStorage.setItem("mealData", JSON.stringify([]));
+            location.reload();
         });
     </script>
 
