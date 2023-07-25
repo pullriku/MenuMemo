@@ -28,7 +28,7 @@
       "purpose": "maskable"
     }
   ],
-  "start_url": "/MenuMemo/index.html",
+  "start_url": "/MenuMemo/",
   "theme_color": "#FFFFFF",
   "display": "standalone",
   "background_color": "#FFFFFF"
