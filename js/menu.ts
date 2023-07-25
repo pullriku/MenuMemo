@@ -1,3 +1,5 @@
+const DATA_NAME = "mealData";
+
 class Menu {
     name: string;
     dishes: string[];
@@ -23,4 +25,22 @@ function strPath(path: string): string {
     } else {
         return `/${path}`;
     }
+}
+
+function readData(): Menu[] {
+    let anyData = JSON.parse(localStorage.getItem(DATA_NAME) ?? "[]");
+    let data: Menu[];
+    
+    if(Array.isArray(anyData)) {
+        data = anyData;
+    } else {
+        localStorage.setItem(DATA_NAME, JSON.stringify(new Array()));
+        data = JSON.parse(localStorage.getItem(DATA_NAME) ?? "");
+    }
+
+    return data;
+}
+
+function writeData(data: Menu[]) {
+    localStorage.setItem(DATA_NAME, JSON.stringify(data));
 }

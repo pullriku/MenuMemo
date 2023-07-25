@@ -1,9 +1,4 @@
 "use strict";
-const DATA_NAME = "mealData";
-const submitButton = document.getElementById("submitButton");
-submitButton === null || submitButton === void 0 ? void 0 : submitButton.addEventListener("click", event => {
-    register();
-});
 function register() {
     const menuNameField = document.getElementById("menuNameField");
     const mealTypeSelector = document.getElementById("mealTypeSelector");
@@ -37,19 +32,13 @@ function register() {
         const dateString = `${year}/${month}/${day}`;
         menuName = `${dateString}の${mealType}`;
     }
-    data.push(new Menu(menuName, menuContents === null || menuContents === void 0 ? void 0 : menuContents.split("\n"), date.toISOString(), menuMemo));
-    localStorage.setItem(DATA_NAME, JSON.stringify(data));
+    data.push(new Menu(menuName, menuContents === null || menuContents === void 0 ? void 0 : menuContents.split("\n").filter(elem => elem != ""), date.toISOString(), menuMemo));
+    writeData(data);
     openLink("index.html");
 }
-function readData() {
-    var _a;
-    let anyData = JSON.parse((_a = localStorage.getItem(DATA_NAME)) !== null && _a !== void 0 ? _a : "[]");
-    let data;
-    if (Array.isArray(anyData)) {
-        data = anyData;
-    }
-    else {
-        data = [];
-    }
-    return data;
+{
+    const submitButton = document.getElementById("submitButton");
+    submitButton === null || submitButton === void 0 ? void 0 : submitButton.addEventListener("click", event => {
+        register();
+    });
 }

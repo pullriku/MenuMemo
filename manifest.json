@@ -29,7 +29,7 @@
     }
   ],
   "start_url": "/MenuMemo/index.html",
-  "theme_color": "#0000FF",
+  "theme_color": "#FFFFFF",
   "display": "standalone",
-  "background_color": "#0000FF"
+  "background_color": "#FFFFFF"
 }

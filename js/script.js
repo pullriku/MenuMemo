@@ -1,26 +1,27 @@
 "use strict";
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('service-worker.js').then(reg => {
-        console.log('サービスワーカーを登録しました', reg);
     }).catch(err => {
-        console.log('登録失敗', err);
     });
 }
-function main() {
-    var _a, _b;
+function deleteContent(created) {
+    var _a;
+    const domContent = document.getElementById(created);
+    const title = (_a = domContent === null || domContent === void 0 ? void 0 : domContent.querySelector("h3")) === null || _a === void 0 ? void 0 : _a.textContent;
+    let permission = window.confirm(`${title}を削除しますか？`);
+    if (permission == false)
+        return;
+    domContent === null || domContent === void 0 ? void 0 : domContent.remove();
+    let data = readData();
+    data = data.filter(elem => {
+        return elem.created != created;
+    });
+    console.log(data);
+    writeData(data);
+}
+{
     const DATA_NAME = "mealData";
-    console.log(localStorage.getItem(DATA_NAME));
-    localStorage.removeItem("testMeal");
-    let anyData = JSON.parse((_a = localStorage.getItem(DATA_NAME)) !== null && _a !== void 0 ? _a : "[]");
-    let data;
-    if (Array.isArray(anyData)) {
-        console.log("読み込み成功");
-        data = anyData;
-    }
-    else {
-        localStorage.setItem(DATA_NAME, JSON.stringify(new Array()));
-        data = JSON.parse((_b = localStorage.getItem(DATA_NAME)) !== null && _b !== void 0 ? _b : "");
-    }
+    let data = readData();
     let section = document.querySelector("div#menuInfo");
     data.reverse();
     data.forEach(elem => {
@@ -28,26 +29,31 @@ function main() {
             return;
         let dishes = elem.dishes.join(`</li><li>`);
         dishes = `<li>${dishes}</li>`;
-        const memoText = elem.memo == undefined || elem.memo == "" ? "" : `
+        const memoText = (elem.memo == undefined || elem.memo == "") ? "" : `
         <h4 id="menuMemo">メモ</h4>
         ${elem.memo}
         `;
         const date = new Date(Date.parse(elem.created));
-        console.log(date);
         const year = date.getFullYear();
         const month = date.getMonth() + 1;
         const day = date.getDate();
         const dateString = `${year}/${month}/${day}`;
         section.innerHTML += `
-        <section class="field">
-        <small id="created">${dateString}</small>
-        <h3>${elem.name}</h3>
-        <ul>
-        ${dishes}
-        </ul>
-        ${memoText}
+        <section class="field" id="${elem.created}">
+            <div class="fieldTitle">
+                <small id="created">${dateString}</small>
+                <h3>${elem.name}</h3>
+            </div>
+            <div class="fieldMenu">
+                <button class="deleteButton" onclick="deleteContent('${elem.created}')">❌</button>
+            </div>
+            <div class="fieldContent">
+                <ul>
+                    ${dishes}
+                </ul>
+                ${memoText}
+            </div>
         </section>
         `;
     });
 }
-main();

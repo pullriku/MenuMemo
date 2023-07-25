@@ -1,10 +1,3 @@
-
-const DATA_NAME = "mealData";
-const submitButton = document.getElementById("submitButton");
-submitButton?.addEventListener("click", event => {
-    register();
-});
-
 function register() {
     const menuNameField = document.getElementById("menuNameField") as HTMLInputElement;
     const mealTypeSelector = document.getElementById("mealTypeSelector") as HTMLInputElement;
@@ -45,26 +38,20 @@ function register() {
     data.push(
         new Menu(
             menuName,
-            menuContents?.split("\n"),
+            menuContents?.split("\n").filter(elem => elem != ""),
             date.toISOString(),
             menuMemo
         )
     );
     
-    localStorage.setItem(DATA_NAME, JSON.stringify(data));
+    writeData(data);
     
     openLink("index.html");
 }
 
-function readData(): Menu[] {
-    let anyData = JSON.parse(localStorage.getItem(DATA_NAME) ?? "[]");
-    let data: Menu[];
-    
-    if(Array.isArray(anyData)) {
-        data = anyData;
-    } else {
-        data = [];
-    }
-
-    return data;
+{
+    const submitButton = document.getElementById("submitButton");
+    submitButton?.addEventListener("click", event => {
+        register();
+    });
 }
