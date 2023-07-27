@@ -19,6 +19,7 @@ button, select {
     padding: 10px;
     border: 0.8px solid black;
     border-bottom: 2px solid black;
+    background-color: rgb(233, 233, 233);
     font-size:smaller;
     cursor: pointer;
 }
