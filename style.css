@@ -14,6 +14,7 @@ h1 {
     text-align: center;
 }
 
+
 button, select {
     border-radius: 10px;
     padding: 10px;
@@ -24,16 +25,29 @@ button, select {
     cursor: pointer;
 }
 
-.deleteButton {
+.fieldMenu button {
     background-color: white;
+    margin-left: 15px;
 }
-
 
 section{
     display: block;
     background-color: #eee;
     border-radius: 8px;
+}
 
+div.form {
+    max-width: 50rem;
+    width: 90%;
+    margin: 0 auto;
+}
+
+input[type=text], textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1.5px solid gray;
+    border-radius: 10px;
+    box-sizing: border-box;
 }
 
 .field {
@@ -64,6 +78,16 @@ nav {
 
 nav * {
     margin: 0px 5px;
+}
+
+#submitButton {
+    display: block;
+    margin: 0 auto;
+    background-color: skyblue;
+    color: black;
+    font-size: larger;
+    font-weight: bold;
+    width: 30%;
 }
 
 .fieldTitle {

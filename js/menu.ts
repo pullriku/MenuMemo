@@ -1,16 +1,19 @@
 const DATA_NAME = "mealData";
 
+type MenuType = "memo" | "morning" | "lunch" | "dinner" | undefined;
 class Menu {
     name: string;
+    type: MenuType;
     dishes: string[];
     created: string;
     memo: string;
 
     constructor(
-        name: string = "", dishes: string[] = [], 
+        name: string = "", type?: MenuType, dishes: string[] = [], 
         created: string = new Date().toISOString(), memo: string = ""
     ) {
         this.name = name;
+        this.type = type;
         this.dishes = dishes;
         this.created = created;
         this.memo = memo;

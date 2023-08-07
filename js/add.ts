@@ -1,3 +1,10 @@
+const previousButton = document.getElementById("previousButton") as HTMLButtonElement;
+previousButton.addEventListener("click", event => {
+    const url = new URL(location.href);
+    history.replaceState("", "", url.pathname);
+    openLink('index.html');
+});
+
 function register() {
     const menuNameField = document.getElementById("menuNameField") as HTMLInputElement;
     const mealTypeSelector = document.getElementById("mealTypeSelector") as HTMLInputElement;
@@ -12,19 +19,20 @@ function register() {
     let date = new Date();
     let data = readData();
 
+    let mealTypeName = "";
     switch(mealType) {
         default:
         case "memo":
-            mealType = "メモ";
+            mealTypeName = "メモ";
             break;
         case "morning":
-            mealType = "朝食";
+            mealTypeName = "朝食";
             break;
         case "lunch":
-            mealType = "昼食";
+            mealTypeName = "昼食";
             break;
         case "dinner":
-            mealType = "夕食";
+            mealTypeName = "夕食";
             break;
     }
 
@@ -33,13 +41,24 @@ function register() {
         const month = date.getMonth() + 1;
         const day = date.getDate();
         const dateString = `${year}/${month}/${day}`;
-        menuName = `${dateString}の${mealType}`;
+        menuName = `${dateString}の${mealTypeName}`;
     }
+    const param = new URLSearchParams(location.search);
+    const idInParam = param.get("id");
+    const created = idInParam ?? date.toISOString();
+
+    if(idInParam != null) {
+        data = data.filter(elem => {
+            return elem.created != idInParam;
+        });
+    }
+
     data.push(
         new Menu(
             menuName,
+            mealType as MenuType,
             menuContents?.split("\n").filter(elem => elem != ""),
-            date.toISOString(),
+            created,
             menuMemo
         )
     );

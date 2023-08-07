@@ -25,6 +25,10 @@ function deleteContent(created: string) {
     writeData(data);
 }
 
+function moveToEditView(id: string) {
+    location.href = `edit.html?id=${id}`;
+}
+
 {
     const DATA_NAME = "mealData";
 
@@ -32,7 +36,12 @@ function deleteContent(created: string) {
 
     let section = document.querySelector("div#menuInfo");
 
-    data.reverse();
+    data.sort((a: Menu, b: Menu): number => {
+        const dateA = Date.parse(a.created);
+        const dateB = Date.parse(b.created);
+        return dateB - dateA;
+    });
+
     
     data.forEach(elem => {
         if (section === null) return;
@@ -56,6 +65,7 @@ function deleteContent(created: string) {
                 <h3>${elem.name}</h3>
             </div>
             <div class="fieldMenu">
+                <button class="editButton" onclick="moveToEditView('${elem.created}')">✏️</button>
                 <button class="deleteButton" onclick="deleteContent('${elem.created}')">❌</button>
             </div>
             <div class="fieldContent">

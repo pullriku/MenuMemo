@@ -1,4 +1,10 @@
 "use strict";
+const previousButton = document.getElementById("previousButton");
+previousButton.addEventListener("click", event => {
+    const url = new URL(location.href);
+    history.replaceState("", "", url.pathname);
+    openLink('index.html');
+});
 function register() {
     const menuNameField = document.getElementById("menuNameField");
     const mealTypeSelector = document.getElementById("mealTypeSelector");
@@ -10,19 +16,20 @@ function register() {
     const menuMemo = menuMemoField.value;
     let date = new Date();
     let data = readData();
+    let mealTypeName = "";
     switch (mealType) {
         default:
         case "memo":
-            mealType = "メモ";
+            mealTypeName = "メモ";
             break;
         case "morning":
-            mealType = "朝食";
+            mealTypeName = "朝食";
             break;
         case "lunch":
-            mealType = "昼食";
+            mealTypeName = "昼食";
             break;
         case "dinner":
-            mealType = "夕食";
+            mealTypeName = "夕食";
             break;
     }
     if (menuName == "") {
@@ -30,9 +37,17 @@ function register() {
         const month = date.getMonth() + 1;
         const day = date.getDate();
         const dateString = `${year}/${month}/${day}`;
-        menuName = `${dateString}の${mealType}`;
+        menuName = `${dateString}の${mealTypeName}`;
     }
-    data.push(new Menu(menuName, menuContents === null || menuContents === void 0 ? void 0 : menuContents.split("\n").filter(elem => elem != ""), date.toISOString(), menuMemo));
+    const param = new URLSearchParams(location.search);
+    const idInParam = param.get("id");
+    const created = idInParam !== null && idInParam !== void 0 ? idInParam : date.toISOString();
+    if (idInParam != null) {
+        data = data.filter(elem => {
+            return elem.created != idInParam;
+        });
+    }
+    data.push(new Menu(menuName, mealType, menuContents === null || menuContents === void 0 ? void 0 : menuContents.split("\n").filter(elem => elem != ""), created, menuMemo));
     writeData(data);
     openLink("index.html");
 }

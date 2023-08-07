@@ -1,8 +1,9 @@
 "use strict";
 const DATA_NAME = "mealData";
 class Menu {
-    constructor(name = "", dishes = [], created = new Date().toISOString(), memo = "") {
+    constructor(name = "", type, dishes = [], created = new Date().toISOString(), memo = "") {
         this.name = name;
+        this.type = type;
         this.dishes = dishes;
         this.created = created;
         this.memo = memo;
