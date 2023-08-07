@@ -1,6 +1,6 @@
 "use strict";
 const previousButton = document.getElementById("previousButton");
-previousButton.addEventListener("click", event => {
+previousButton === null || previousButton === void 0 ? void 0 : previousButton.addEventListener("click", () => {
     const url = new URL(location.href);
     history.replaceState("", "", url.pathname);
     openLink('index.html');

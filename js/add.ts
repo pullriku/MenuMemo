@@ -1,5 +1,5 @@
-const previousButton = document.getElementById("previousButton") as HTMLButtonElement;
-previousButton.addEventListener("click", event => {
+const previousButton = document.getElementById("previousButton");
+previousButton?.addEventListener("click", () => {
     const url = new URL(location.href);
     history.replaceState("", "", url.pathname);
     openLink('index.html');
