@@ -1,5 +1,14 @@
 "use strict";
 const DATA_NAME = "mealData";
+const previousButton = document.getElementById("previousButton");
+previousButton === null || previousButton === void 0 ? void 0 : previousButton.addEventListener("click", () => {
+    clearURLParameters();
+    openLink('index.html');
+});
+function clearURLParameters() {
+    const url = new URL(location.href);
+    history.replaceState("", "", url.pathname);
+}
 class Menu {
     constructor(name = "", type, dishes = [], created = new Date().toISOString(), memo = "") {
         this.name = name;

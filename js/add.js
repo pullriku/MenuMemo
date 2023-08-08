@@ -1,10 +1,4 @@
 "use strict";
-const previousButton = document.getElementById("previousButton");
-previousButton === null || previousButton === void 0 ? void 0 : previousButton.addEventListener("click", () => {
-    const url = new URL(location.href);
-    history.replaceState("", "", url.pathname);
-    openLink('index.html');
-});
 function register() {
     const menuNameField = document.getElementById("menuNameField");
     const mealTypeSelector = document.getElementById("mealTypeSelector");
@@ -49,6 +43,7 @@ function register() {
     }
     data.push(new Menu(menuName, mealType, menuContents === null || menuContents === void 0 ? void 0 : menuContents.split("\n").filter(elem => elem != ""), created, menuMemo));
     writeData(data);
+    clearURLParameters();
     openLink("index.html");
 }
 {

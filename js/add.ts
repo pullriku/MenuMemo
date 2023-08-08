@@ -1,10 +1,3 @@
-const previousButton = document.getElementById("previousButton");
-previousButton?.addEventListener("click", () => {
-    const url = new URL(location.href);
-    history.replaceState("", "", url.pathname);
-    openLink('index.html');
-});
-
 function register() {
     const menuNameField = document.getElementById("menuNameField") as HTMLInputElement;
     const mealTypeSelector = document.getElementById("mealTypeSelector") as HTMLInputElement;
@@ -65,6 +58,7 @@ function register() {
     
     writeData(data);
     
+    clearURLParameters();
     openLink("index.html");
 }
 

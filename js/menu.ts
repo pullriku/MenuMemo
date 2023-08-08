@@ -1,5 +1,16 @@
 const DATA_NAME = "mealData";
 
+const previousButton = document.getElementById("previousButton");
+previousButton?.addEventListener("click", () => {
+    clearURLParameters();
+    openLink('index.html');
+});
+
+function clearURLParameters() {
+    const url = new URL(location.href);
+    history.replaceState("", "", url.pathname);
+}
+
 type MenuType = "memo" | "morning" | "lunch" | "dinner" | undefined;
 class Menu {
     name: string;
