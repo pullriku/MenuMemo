@@ -37,7 +37,7 @@ function openLink(path: string) {
 
 function strPath(path: string): string {
     const repositoryName = "MenuMemo";
-    if (location.hostname == "tyomogit.github.io") {
+    if (location.hostname == "pullriku.github.io") {
         return `/${repositoryName}/${path}`;
     } else {
         return `/${path}`;
